@@ -10,7 +10,6 @@ public class ChangeSoundVolume : MonoBehaviour
 	{
 		// "AudioSource"コンポーネントを取得
 		audioSource = gameObject.GetComponent<AudioSource>();
-
 	}
 
 	/// <summary>
@@ -22,4 +21,21 @@ public class ChangeSoundVolume : MonoBehaviour
 		// 音楽の音量をスライドバーの値に変更
 		audioSource.volume = newSliderValue;
 	}
+
+
+	private bool isMuted = false;
+
+    public void ToggleMute()
+    {
+        isMuted = !isMuted;
+
+        if (isMuted)
+        {
+            AudioListener.volume = 0; // 音を完全にミュート
+        }
+        else
+        {
+            AudioListener.volume = 1; // 音を通常のボリュームに戻す
+        }
+    }
 }
