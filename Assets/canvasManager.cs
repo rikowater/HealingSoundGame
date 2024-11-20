@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class canvasManager : MonoBehaviour
+public class CanvasManager : MonoBehaviour
 {
     public GameObject menuPanel;
     public Vector3 startPosition;
@@ -10,28 +10,25 @@ public class canvasManager : MonoBehaviour
     public float transitionSpeed = 5.0f;
 
     private Coroutine currentCoroutine;
+    private bool isMenuActive = false; // メニューの状態を追跡
 
     public void ToggleMenu()
     {
-        //menuPanel.SetActive(!menuPanel.activeSelf);
-    }
-
-    public void ActiveMenu()
-    {
         if (currentCoroutine != null)
         {
             StopCoroutine(currentCoroutine);
         }
-        currentCoroutine = StartCoroutine(MoveToPosition(endPosition));
-    }
 
-    public void NegativeMenu()
-    {
-        if (currentCoroutine != null)
+        if (isMenuActive)
         {
-            StopCoroutine(currentCoroutine);
+            currentCoroutine = StartCoroutine(MoveToPosition(startPosition));
         }
-        currentCoroutine = StartCoroutine(MoveToPosition(startPosition));
+        else
+        {
+            currentCoroutine = StartCoroutine(MoveToPosition(endPosition));
+        }
+
+        isMenuActive = !isMenuActive; // 状態をトグル
     }
 
     private IEnumerator MoveToPosition(Vector3 targetPosition)
