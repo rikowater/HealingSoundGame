@@ -852,7 +852,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 422432745}
-  - component: {fileID: 422432744}
+  - component: {fileID: 422432746}
   - component: {fileID: 422432743}
   m_Layer: 0
   m_Name: Sound3
@@ -871,8 +871,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 719244e8ec864428f9c8d902ebc011ef, type: 3}
-  m_Resource: {fileID: 8300000, guid: 719244e8ec864428f9c8d902ebc011ef, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 68b4e9715e0e34c98b212d140d8eb03b, type: 3}
+  m_Resource: {fileID: 8300000, guid: 68b4e9715e0e34c98b212d140d8eb03b, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -958,18 +958,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &422432744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 422432742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6b7fe07425147e2abc701c1eb288bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &422432745
 Transform:
   m_ObjectHideFlags: 0
@@ -985,6 +973,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &422432746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422432742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3177f97b9c0204351a920dc9e415c14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &428711439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,7 +1257,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -1533,8 +1533,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1048700190}
-        m_TargetAssemblyTypeName: ChangeSoundVolume, Assembly-CSharp
+      - m_Target: {fileID: 422432746}
+        m_TargetAssemblyTypeName: soundManager3, Assembly-CSharp
         m_MethodName: ToggleMute
         m_Mode: 1
         m_Arguments:
@@ -2129,7 +2129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1018485798}
-  - component: {fileID: 1018485797}
+  - component: {fileID: 1018485799}
   - component: {fileID: 1018485796}
   m_Layer: 0
   m_Name: Sound2
@@ -2148,8 +2148,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 719244e8ec864428f9c8d902ebc011ef, type: 3}
-  m_Resource: {fileID: 8300000, guid: 719244e8ec864428f9c8d902ebc011ef, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 685f140a1319546d4bcf5a8b51084c66, type: 3}
+  m_Resource: {fileID: 8300000, guid: 685f140a1319546d4bcf5a8b51084c66, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -2235,18 +2235,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1018485797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018485795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f6b7fe07425147e2abc701c1eb288bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1018485798
 Transform:
   m_ObjectHideFlags: 0
@@ -2262,6 +2250,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1018485799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018485795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d0ee2595f354139bc9b73c0becf58a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1048700188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2494,8 +2494,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1048700190}
-        m_TargetAssemblyTypeName: ChangeSoundVolume, Assembly-CSharp
+      - m_Target: {fileID: 1018485799}
+        m_TargetAssemblyTypeName: soundManager2, Assembly-CSharp
         m_MethodName: SoundSliderOnValueChange
         m_Mode: 0
         m_Arguments:
@@ -3874,8 +3874,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1048700190}
-        m_TargetAssemblyTypeName: ChangeSoundVolume, Assembly-CSharp
+      - m_Target: {fileID: 1018485799}
+        m_TargetAssemblyTypeName: soundManager2, Assembly-CSharp
         m_MethodName: ToggleMute
         m_Mode: 1
         m_Arguments:
@@ -4374,8 +4374,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1048700190}
-        m_TargetAssemblyTypeName: ChangeSoundVolume, Assembly-CSharp
+      - m_Target: {fileID: 422432746}
+        m_TargetAssemblyTypeName: soundManager3, Assembly-CSharp
         m_MethodName: SoundSliderOnValueChange
         m_Mode: 0
         m_Arguments:

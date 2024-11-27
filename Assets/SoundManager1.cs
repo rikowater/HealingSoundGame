@@ -31,11 +31,11 @@ public class ChangeSoundVolume : MonoBehaviour
 
         if (isMuted)
         {
-            AudioListener.volume = 0; // 音を完全にミュート
+            audioSource.volume = 0; // 音を完全にミュート
         }
         else
         {
-            AudioListener.volume = 1; // 音を通常のボリュームに戻す
+            audioSource.volume = 1; // 音を通常のボリュームに戻す
         }
     }
 }
