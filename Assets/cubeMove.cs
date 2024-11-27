@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class cubeMove : MonoBehaviour
+public class CubeMove : MonoBehaviour
 {
     public float moveSpeed = 5f; // 移動速度
 
@@ -17,26 +17,13 @@ public class cubeMove : MonoBehaviour
         transform.Translate(movement);
     }
 
-    //アイテムに触れた時の処理
-    void OnCollisionStay(Collision collision)
+    // アイテムに触れた時の処理
+    void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Item")
+        if (other.CompareTag("Item")) // "Item"タグを持つオブジェクトのみ削除
         {
-            Debug.Log("アイテムを拾う（B）");
-
-            if (Input.GetKeyDown(KeyCode.B)) //Bキーを押すとアイテムを拾う
-            {
-                Destroy(collision.gameObject); //拾ったらそのアイテムを消す
-            }
-        }
-    }
-
-    //アイテムから離れるとメッセージを空の文字列に戻す
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.tag == "Item")
-        {
-            Debug.Log("アイテムから離れました");
+            Debug.Log("アイテムに触れました: " + other.gameObject.name);
+            Destroy(other.gameObject); // 触れたアイテムを削除
         }
     }
 }

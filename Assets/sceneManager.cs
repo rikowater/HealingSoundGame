@@ -7,13 +7,13 @@ public class sceneManager : MonoBehaviour
 {
     private static bool Loaded { get; set; }
 
-    void Awake()
-    {
-        if(Loaded) return;
+    // void Awake()
+    // {
+    //     if(Loaded) return;
 
-        Loaded = true;
-        SceneManager.LoadScene("test_iOS 1", LoadSceneMode.Additive);
-    }
+    //     Loaded = true;
+    //     SceneManager.LoadScene("test_iOS 1", LoadSceneMode.Additive);
+    // }
 
     public void OnLoadSceneAdditive()
     {
