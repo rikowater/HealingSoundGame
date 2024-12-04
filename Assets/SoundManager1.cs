@@ -7,6 +7,7 @@ public class ChangeSoundVolume : MonoBehaviour
     public Slider volumeSlider; // スライダーの参照を設定する
 
     private bool isMuted = true; // シーン開始時にミュート状態
+    private float lastVolume;   // ミュート解除時に戻す音量
 
     private void Start()
     {
@@ -24,10 +25,13 @@ public class ChangeSoundVolume : MonoBehaviour
             Debug.LogError("Volume Slider が設定されていません！");
             return;
         }
-        volumeSlider.value = audioSource.volume;
+
+        lastVolume = audioSource.volume; // 初期音量を保存
+        volumeSlider.value = lastVolume;
 
         // 初期状態でミュートに設定
-        MuteAudio(true);
+        isMuted = true;
+        audioSource.volume = 0; // 音を完全にミュート
     }
 
     /// <summary>
@@ -37,7 +41,12 @@ public class ChangeSoundVolume : MonoBehaviour
     public void SoundSliderOnValueChange(float newSliderValue)
     {
         if (audioSource == null) return;
-        if (!isMuted) // ミュート状態ではない場合のみ実行
+
+        // スライダーの値を保存しておく（ミュート解除時に反映）
+        lastVolume = newSliderValue;
+
+        // ミュート状態でなければ即座に音量を反映
+        if (!isMuted)
         {
             audioSource.volume = newSliderValue;
         }
@@ -48,26 +57,17 @@ public class ChangeSoundVolume : MonoBehaviour
     /// </summary>
     public void ToggleMute()
     {
-        if (audioSource == null || volumeSlider == null) return;
+        if (audioSource == null) return;
 
         isMuted = !isMuted;
 
-        MuteAudio(isMuted); // ミュート処理
-
-        // スライダーの操作を制御
-        volumeSlider.interactable = !isMuted;
-    }
-
-    // ミュート処理を行うヘルパー関数
-    private void MuteAudio(bool mute)
-    {
-        if (mute)
+        if (isMuted)
         {
             audioSource.volume = 0; // 音を完全にミュート
         }
         else
         {
-            audioSource.volume = volumeSlider.value; // スライダーの値を反映
+            audioSource.volume = lastVolume; // ミュート解除時に保存していた音量を復元
         }
     }
 }

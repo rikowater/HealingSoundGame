@@ -985,6 +985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3177f97b9c0204351a920dc9e415c14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 1928381263}
 --- !u!1 &428711439
 GameObject:
   m_ObjectHideFlags: 0
@@ -2145,6 +2146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d0ee2595f354139bc9b73c0becf58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 1052318061}
 --- !u!1 &1048700188
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,9 +3248,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14555fb9156e84befa91fb20569e978c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: test_Scenes
-  targetObjectName: Cube
-  itemToShow: {fileID: 2134208245}
+  items:
+  - targetSceneName: test_Scenes
+    targetObjectName: Cube
+    itemToShow1: {fileID: 2134208245}
+    itemToShow2: {fileID: 1743815592}
+  - targetSceneName: test_Scenes
+    targetObjectName: Cube (1)
+    itemToShow1: {fileID: 1770664528}
+    itemToShow2: {fileID: 1052318059}
+  - targetSceneName: test_Scenes
+    targetObjectName: Cube (2)
+    itemToShow1: {fileID: 586575746}
+    itemToShow2: {fileID: 1928381261}
 --- !u!1 &1559360843
 GameObject:
   m_ObjectHideFlags: 0
