@@ -4,56 +4,51 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Animator animator;
 
-    float speed = 3.0f;
+private Rigidbody _rigidbody;
+private Transform _transform;
+private Animator _animator;
+private float _horizontal;
+private float _vertical;
+private Vector3 _velocity;
+private float _speed = 2f;
 
-    void Start()
-    {
-        // Animatorコンポーネントの取得
-        animator = GetComponent<Animator>();
-    }
+private Vector3 _aim; // 追記
+private Quaternion _playerRotation; // 追記
 
-    void Update()
-    {
-        bool isWalking = false;
+void Start()
+{
+_rigidbody = GetComponent<Rigidbody>();
+_transform = GetComponent<Transform>();
+_animator = GetComponent<Animator>();
 
-        // Wキー（前方移動）
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += speed * transform.forward * Time.deltaTime;
-            isWalking = true;
-        }
+_playerRotation = _transform.rotation; // 追記
 
-        // Sキー（後方移動）
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position -= speed * transform.forward * Time.deltaTime;
-            isWalking = true;
-        }
+}
 
-        // Dキー（右移動）
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += speed * transform.right * Time.deltaTime;
-            isWalking = true;
-        }
+void FixedUpdate()
+{
+_horizontal = Input.GetAxis("Horizontal");
+_vertical = Input.GetAxis("Vertical");
 
-        // Aキー（左移動）
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position -= speed * transform.right * Time.deltaTime;
-            isWalking = true;
-        }
+var _horizontalRotation = Quaternion.AngleAxis(Camera.main.transform.eulerAngles.y, Vector3.up); // 追記
 
-        // アニメーションの切り替え
-        if (isWalking)
-        {
-            animator.SetTrigger("WalkTrigger");
-        }
-        else
-        {
-            animator.SetTrigger("IdleTrigger");
-        }
-    }
+_velocity = _horizontalRotation * new Vector3(_horizontal, _rigidbody.velocity.y, _vertical).normalized; // 修正
+
+_aim = _horizontalRotation * new Vector3(_horizontal, 0, _vertical).normalized; // 追記
+
+if(_aim.magnitude > 0.5f) { // 以下追記
+_playerRotation = Quaternion.LookRotation(_aim, Vector3.up);
+}
+
+_transform.rotation = Quaternion.RotateTowards(_transform.rotation, _playerRotation, 600 * Time.deltaTime); // 追記
+
+if (_velocity.magnitude > 0.1f) {
+_animator.SetBool("Walk", true);
+} else {
+_animator.SetBool("Walk", false);
+}
+
+_rigidbody.velocity = _velocity * _speed;
+}
 }
