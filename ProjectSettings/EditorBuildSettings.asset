@@ -8,14 +8,17 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/test_iOS.unity
     guid: 052cde95b66bf4fc2b27f835bc2009a6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/test_Scenes.unity
     guid: 6b984808326b142edb79399e9eb86b2e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/test_iOS 1.unity
     guid: 41b7086afa4a847d0872a3188c1148da
+  - enabled: 1
+    path: Assets/Scenes/test_3D.unity
+    guid: 14fe7cf363b9d4bc5b70c43786d2c522
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
