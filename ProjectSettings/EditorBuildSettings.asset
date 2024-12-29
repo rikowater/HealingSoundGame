@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/test_iOS.unity
     guid: 052cde95b66bf4fc2b27f835bc2009a6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/test_Scenes.unity
     guid: 6b984808326b142edb79399e9eb86b2e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/test_iOS 1.unity
     guid: 41b7086afa4a847d0872a3188c1148da
   - enabled: 1

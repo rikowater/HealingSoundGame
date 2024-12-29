@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private float _horizontal;
     private float _vertical;
     private Vector3 _velocity;
-    private float _speed = 2f;
+    private float _speed = 3f;
 
     private Vector3 _aim; // 進行方向
     private Quaternion _playerRotation; // キャラクターの回転
