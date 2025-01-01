@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour
 
     public FixedJoystick inputMove; // JoyStick
 
+    // 特定のオブジェクトを設定
+    [SerializeField] private GameObject targetObjectToCheck; // チェック対象のオブジェクト
+    [SerializeField] private GameObject objectToShow;        // 表示したいオブジェクト
+
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -24,6 +29,12 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _playerRotation = _transform.rotation;
+
+        // 表示したいオブジェクトを非表示にしておく
+        if (objectToShow != null)
+        {
+            objectToShow.SetActive(false);
+        }
     }
 
     void FixedUpdate()
@@ -62,5 +73,30 @@ public class PlayerController : MonoBehaviour
 
         // Rigidbodyを使った移動処理
         _rigidbody.velocity = _velocity * _speed;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // トリガー内にいるオブジェクトが指定したオブジェクトか確認
+        if (other.gameObject == targetObjectToCheck)
+        {
+            // 表示したいオブジェクトを表示
+            if (objectToShow != null)
+            {
+                objectToShow.SetActive(true);
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // トリガーから離れた場合、オブジェクトを非表示に戻す
+        if (other.gameObject == targetObjectToCheck)
+        {
+            if (objectToShow != null)
+            {
+                objectToShow.SetActive(false);
+            }
+        }
     }
 }
