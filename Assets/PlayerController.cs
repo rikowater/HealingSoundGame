@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _aim; // 進行方向
     private Quaternion _playerRotation; // キャラクターの回転
 
-    public FixedJoystick inputMove; // JoyStick
+    //public FixedJoystick inputMove; // JoyStick
 
     // 特定のオブジェクトを設定
     [SerializeField] private GameObject targetObjectToCheck; // チェック対象のオブジェクト

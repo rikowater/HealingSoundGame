@@ -15,11 +15,11 @@ public class JoystickInputManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            // DontDestroyOnLoad(gameObject);  // シーン変更後もオブジェクトを破棄しない
-        }
-        else
-        {
-            Destroy(gameObject); // 他のインスタンスがあれば破棄
+        //     DontDestroyOnLoad(gameObject);  // シーン変更後もオブジェクトを破棄しない
+        // }
+        // else
+        // {
+        //     Destroy(gameObject); // 他のインスタンスがあれば破棄
         }
     }
 

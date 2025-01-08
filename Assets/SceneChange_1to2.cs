@@ -1,17 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SceneChange_1to2 : MonoBehaviour
 {
-    // private void OnCollisionEnter(Collision other)
-    // {
-    //     if (other.gameObject.CompareTag("Player"))
-    //     {
-    //         SceneManager.LoadScene("area2");
-    //     }
-    // }
+    private static string persistentScene = "test_iOS 1"; // 永続シーン
+
+    void Start()
+    {
+        // 永続シーンがロードされていない場合、ロードする
+        if (!SceneManager.GetSceneByName(persistentScene).isLoaded)
+        {
+            SceneManager.LoadScene(persistentScene, LoadSceneMode.Additive);
+        }
+    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -23,16 +25,29 @@ public class SceneChange_1to2 : MonoBehaviour
 
     IEnumerator CoLoad()
     {
-        //SceneAをアンロード
-        var op = SceneManager.LoadSceneAsync("area2");
-        var qr = SceneManager.UnloadSceneAsync("area1");
-        yield return qr;
+        // 新しいシーンarea2を非同期でロード
+        AsyncOperation loadOperation = SceneManager.LoadSceneAsync("area2", LoadSceneMode.Additive);
 
-       //アンロード後の処理を書く
+        // area2のロードが完了するまで待機
+        while (!loadOperation.isDone)
+        {
+            yield return null;
+        }
 
-        //必要に応じて不使用アセットをアンロードしてメモリを解放する
-        //けっこう重い処理なので、別に管理するのも手
-        yield return Resources.UnloadUnusedAssets();
-     }
-     
+        // 現在ロードされているシーンを確認し、area1はアンロード
+        foreach (var scene in SceneManager.GetAllScenes())
+        {
+            // 永続シーンと新しくロードしたarea2はアンロードしない
+            if (scene.name != persistentScene && scene.name != "area2")
+            {
+                SceneManager.UnloadSceneAsync(scene);
+            }
+        }
+
+        // アクティブシーンをarea2に設定
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("area2"));
+
+        // ロード完了後の処理
+        Debug.Log("Switched to area2, keeping persistent scene 'test_iOS 1'.");
+    }
 }
