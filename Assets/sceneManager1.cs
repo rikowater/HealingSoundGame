@@ -34,9 +34,11 @@ public class SceneHandler : MonoBehaviour
         }
 
         // 現在ロードされているシーンを確認し、不要なシーンをアンロード
-        foreach (var scene in SceneManager.GetAllScenes())
+        int sceneCount = SceneManager.sceneCount; // 現在のシーン数を取得
+        for (int i = 0; i < sceneCount; i++)
         {
-            // 永続シーンと新しいシーンはアンロードしない
+            Scene scene = SceneManager.GetSceneAt(i);
+            // 永続シーンと新しいシーン以外をアンロード
             if (scene.name != persistentScene && scene.name != newSceneName)
             {
                 SceneManager.UnloadSceneAsync(scene);

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JoystickInputManager : MonoBehaviour
 {
@@ -15,12 +16,22 @@ public class JoystickInputManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-        //     DontDestroyOnLoad(gameObject);  // シーン変更後もオブジェクトを破棄しない
+        //     DontDestroyOnLoad(gameObject); // シーン変更後もオブジェクトを破棄しない
         // }
         // else
         // {
         //     Destroy(gameObject); // 他のインスタンスがあれば破棄
         }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     void Update()
@@ -30,4 +41,15 @@ public class JoystickInputManager : MonoBehaviour
         Vertical = inputMove.Vertical;
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ResetInput();
+    }
+
+    public void ResetInput()
+    {
+        // 入力値をリセット
+        Horizontal = 0f;
+        Vertical = 0f;
+    }
 }

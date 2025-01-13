@@ -257,9 +257,9 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2851,6 +2851,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5dbf08afaf1445cf81b693b5ab66c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetScene: area2
+  loadingScene: LoadingScene
 --- !u!1001 &1249021156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3380,6 +3382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CampFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 501295248943222296, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Target
       objectReference: {fileID: 0}
     - target: {fileID: 501295248943452728, guid: d6a5e2c4aefa6804b8f7d2af9a9676b5,
         type: 3}
@@ -5629,8 +5636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45b2ca8bb4d81480c930cb22694f7e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObjectToCheck: {fileID: 1400670571}
-  objectToShow: {fileID: 2067625011}
 --- !u!4 &2003413120 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 602311af922614be88f4bbb4033d1012,
@@ -5721,6 +5726,7 @@ GameObject:
   - component: {fileID: 2005510581}
   - component: {fileID: 2005510580}
   - component: {fileID: 2005510582}
+  - component: {fileID: 2005510583}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -5737,7 +5743,7 @@ RectTransform:
   m_GameObject: {fileID: 2005510578}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2067625015}
@@ -5797,6 +5803,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3e70c2ca4114a3686bead7c6ae6916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2005510583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005510578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2005510578}
+          m_TargetAssemblyTypeName: 
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: 
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &2011518602
 PrefabInstance:
   m_ObjectHideFlags: 0

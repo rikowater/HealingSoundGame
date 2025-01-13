@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class SceneChange_1to2 : MonoBehaviour
+public class SceneChange_2to1 : MonoBehaviour
 {
     private static string persistentScene = "test_iOS 1"; // 永続シーン
-    public string targetScene = "area2"; // 遷移先のシーン名
+    public string targetScene = "area1"; // 遷移先のシーン名
     public string loadingScene = "LoadingScene"; // ローディングシーン名
 
     void Start()
@@ -29,7 +29,7 @@ public class SceneChange_1to2 : MonoBehaviour
 
     IEnumerator CoLoad()
     {
-        // 新しいシーンを非同期でロード
+        // ターゲットシーンを非同期でロード
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(targetScene, LoadSceneMode.Additive);
 
         // ロードが完了するまで待機
@@ -38,8 +38,8 @@ public class SceneChange_1to2 : MonoBehaviour
             yield return null;
         }
 
-        // 現在ロードされているシーンを取得し、不要なシーンをアンロード
-        int sceneCount = SceneManager.sceneCount; // 現在のシーン数
+        // 現在ロードされているシーンを確認し、不要なシーンをアンロード
+        int sceneCount = SceneManager.sceneCount; // 現在ロードされているシーン数
         for (int i = 0; i < sceneCount; i++)
         {
             Scene scene = SceneManager.GetSceneAt(i);
@@ -52,8 +52,5 @@ public class SceneChange_1to2 : MonoBehaviour
 
         // アクティブシーンをターゲットシーンに設定
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(targetScene));
-
-        // ロード完了後の処理
-        Debug.Log($"Switched to {targetScene}, keeping persistent scene '{persistentScene}'.");
     }
 }
