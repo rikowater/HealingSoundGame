@@ -5,18 +5,17 @@ using UnityEngine;
 public class GlobalObjectManager : MonoBehaviour
 {
     // シングルトンのインスタンス
-    public static GlobalObjectManager Instance;
+    public static GlobalObjectManager Instance { get; private set; }
 
     // シーン間で共有するオブジェクトの参照
     public GameObject sharedObject;
 
     private void Awake()
     {
-        // シングルトンのセットアップ
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this); // シーンを切り替えても破棄されないようにする
+            //DontDestroyOnLoad(gameObject); // シーンをまたいでもオブジェクトを維持
         }
         else
         {

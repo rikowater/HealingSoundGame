@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,24 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 _aim; // 進行方向
     private Quaternion _playerRotation; // キャラクターの回転
+
+    void Awake()
+    {
+        StartCoroutine(WaitForGlobalObjectManager());
+    }
+
+    private IEnumerator WaitForGlobalObjectManager()
+    {
+        // 別シーンのロードが完了するのを待つ
+        while (GlobalObjectManager.Instance == null || GlobalObjectManager.Instance.sharedObject == null)
+        {
+            Debug.Log("Waiting for GlobalObjectManager to be initialized...");
+            yield return null; // 次のフレームまで待機
+        }
+
+        Debug.Log("Setting sharedObject to inactive.");
+        GlobalObjectManager.Instance.sharedObject.SetActive(false);
+    }
 
     void Start()
     {
@@ -49,7 +68,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Target"))
         {
-            // GlobalObjectManager を使って別シーンのオブジェクトを表示
+            // トリガー内に入ったらオブジェクトを表示
             if (GlobalObjectManager.Instance != null && GlobalObjectManager.Instance.sharedObject != null)
             {
                 GlobalObjectManager.Instance.sharedObject.SetActive(true);
@@ -61,7 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Target"))
         {
-            // GlobalObjectManager を使って別シーンのオブジェクトを非表示
+            // トリガー外に出たらオブジェクトを非表示
             if (GlobalObjectManager.Instance != null && GlobalObjectManager.Instance.sharedObject != null)
             {
                 GlobalObjectManager.Instance.sharedObject.SetActive(false);
