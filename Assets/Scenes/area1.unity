@@ -1771,6 +1771,7 @@ GameObject:
   - component: {fileID: 685177744}
   - component: {fileID: 685177747}
   - component: {fileID: 685177748}
+  - component: {fileID: 685177749}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1912,6 +1913,22 @@ MonoBehaviour:
   offset: {x: 0, y: 5, z: -10}
   smoothSpeed: 0.125
   fixedRotation: {x: 25, y: 0, z: 0}
+--- !u!114 &685177749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685177743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 5
 --- !u!1001 &753702415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5857,7 +5874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93132a9a3526e46819e5b0861e5bf34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: test_iOS 1
+  targetSceneName: UIScene
   targetObjectName: EEE
 --- !u!1001 &2054522641
 PrefabInstance:

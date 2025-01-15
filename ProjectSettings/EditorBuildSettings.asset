@@ -11,18 +11,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/test_iOS.unity
     guid: 052cde95b66bf4fc2b27f835bc2009a6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/test_Scenes.unity
     guid: 6b984808326b142edb79399e9eb86b2e
   - enabled: 1
-    path: Assets/Scenes/test_iOS 1.unity
+    path: Assets/Scenes/UIScene.unity
     guid: 41b7086afa4a847d0872a3188c1148da
   - enabled: 1
     path: Assets/Scenes/test_3D.unity
     guid: 14fe7cf363b9d4bc5b70c43786d2c522
   - enabled: 1
     path: Assets/Scenes/area2.unity
-    guid: ffcea1de1665d42ea999a2ce7aedd5ee
+    guid: 85b9ccec4a6b248a3a56d10aa40ef686
   - enabled: 1
     path: Assets/Scenes/area1.unity
     guid: 581b221cb6ba64ee7be5d8cf94a6c8d2

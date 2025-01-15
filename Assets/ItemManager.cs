@@ -43,10 +43,10 @@ public class ItemManager : MonoBehaviour
             else
             {
                 // シーンを読み込み
-                SceneManager.LoadSceneAsync(item.TargetSceneName, LoadSceneMode.Additive).completed += (operation) =>
-                {
-                    FindTargetObject(item);
-                };
+                //SceneManager.LoadSceneAsync(item.TargetSceneName, LoadSceneMode.Additive).completed += (operation) =>
+                // {
+                //     FindTargetObject(item);
+                // };
             }
         }
     }
@@ -61,12 +61,12 @@ public class ItemManager : MonoBehaviour
                 if (item.ItemToShow1 != null && !item.ItemToShow1.activeSelf)
                 {
                     item.ItemToShow1.SetActive(true);
-                    Debug.Log("アイテム1が表示されました: " + item.ItemToShow1.name);
+                    //Debug.Log("アイテム1が表示されました: " + item.ItemToShow1.name);
                 }
                 if (item.ItemToShow2 != null && !item.ItemToShow2.activeSelf)
                 {
                     item.ItemToShow2.SetActive(true);
-                    Debug.Log("アイテム2が表示されました: " + item.ItemToShow2.name);
+                    //Debug.Log("アイテム2が表示されました: " + item.ItemToShow2.name);
                 }
             }
         }
@@ -84,16 +84,16 @@ public class ItemManager : MonoBehaviour
                 if (rootObject.name == item.TargetObjectName)
                 {
                     targetObjects[item] = rootObject;
-                    Debug.Log("監視対象のオブジェクトを見つけました: " + rootObject.name);
+                    //Debug.Log("監視対象のオブジェクトを見つけました: " + rootObject.name);
                     return;
                 }
             }
 
-            Debug.LogWarning("指定されたオブジェクトが見つかりませんでした: " + item.TargetObjectName);
+            //Debug.LogWarning("指定されたオブジェクトが見つかりませんでした: " + item.TargetObjectName);
         }
         else
         {
-            Debug.LogError("指定されたシーンが無効です: " + item.TargetSceneName);
+            //Debug.LogError("指定されたシーンが無効です: " + item.TargetSceneName);
         }
     }
 }

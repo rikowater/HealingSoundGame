@@ -17,8 +17,8 @@ public class LoadingController : MonoBehaviour
         // 2秒間ローディング画面を表示
         yield return new WaitForSeconds(2);
 
-        // 次のシーンを非同期でロード
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(NextSceneName, LoadSceneMode.Single);
+        // 次のシーンをAdditiveでロード
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(NextSceneName, LoadSceneMode.Additive);
 
         // ロード完了まで待機
         while (!asyncLoad.isDone)
@@ -26,6 +26,10 @@ public class LoadingController : MonoBehaviour
             yield return null;
         }
 
-        // ローディングシーン自体は自動的にアンロードされる
+        // `LoadingScene`をアンロード
+        SceneManager.UnloadSceneAsync("LoadingScene");
+
+        // アクティブシーンをターゲットシーンに設定
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(NextSceneName));
     }
 }

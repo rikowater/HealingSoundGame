@@ -4,7 +4,7 @@ using System.Collections;
 
 public class SceneChange_1to2 : MonoBehaviour
 {
-    private static string persistentScene = "test_iOS 1"; // 永続シーン
+    private static string persistentScene = "UIScene"; // 永続シーン
     public string targetScene = "area2"; // 遷移先のシーン名
     public string loadingScene = "LoadingScene"; // ローディングシーン名
 
@@ -21,9 +21,34 @@ public class SceneChange_1to2 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // ローディングシーンをロードし、次のシーン情報を渡す
+            // ローディングシーンをAdditiveでロードし、次のシーン情報を渡す
             LoadingController.NextSceneName = targetScene;
-            SceneManager.LoadScene(loadingScene);
+
+            // `LoadingScene`をロード
+            SceneManager.LoadScene(loadingScene, LoadSceneMode.Additive);
+
+            // 現在のシーン（`area1`）をアンロード
+            StartCoroutine(UnloadCurrentScene());
+        }
+    }
+
+    private IEnumerator UnloadCurrentScene()
+    {
+        // 現在のアクティブシーンを取得
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // 永続シーンでない場合、アンロード
+        if (currentScene.name != persistentScene)
+        {
+            AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(currentScene);
+
+            // アンロード完了まで待機
+            while (!unloadOperation.isDone)
+            {
+                yield return null;
+            }
+
+            Debug.Log($"{currentScene.name} has been unloaded.");
         }
     }
 
