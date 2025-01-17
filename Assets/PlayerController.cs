@@ -39,6 +39,21 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _playerRotation = _transform.rotation;
+
+        // PlayerPositionManagerに位置情報がある場合、適用する
+        if (PlayerPositionManager.TargetPosition.HasValue)
+        {
+            transform.position = PlayerPositionManager.TargetPosition.Value;
+        }
+
+        if (PlayerPositionManager.TargetRotation.HasValue)
+        {
+            transform.rotation = PlayerPositionManager.TargetRotation.Value;
+        }
+
+        // 位置情報をリセット
+        PlayerPositionManager.TargetPosition = null;
+        PlayerPositionManager.TargetRotation = null;
     }
 
     void FixedUpdate()

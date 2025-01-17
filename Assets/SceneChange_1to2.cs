@@ -21,6 +21,10 @@ public class SceneChange_1to2 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            // 次のシーンでのキャラクター位置を指定
+            PlayerPositionManager.TargetPosition = new Vector3(0, 1, 0); // 例: 次のシーンでの初期位置
+            PlayerPositionManager.TargetRotation = Quaternion.Euler(0, 180, 0); // 例: 初期回転
+
             // ローディングシーンをAdditiveでロードし、次のシーン情報を渡す
             LoadingController.NextSceneName = targetScene;
 
@@ -31,6 +35,7 @@ public class SceneChange_1to2 : MonoBehaviour
             StartCoroutine(UnloadCurrentScene());
         }
     }
+
 
     private IEnumerator UnloadCurrentScene()
     {
@@ -80,5 +85,11 @@ public class SceneChange_1to2 : MonoBehaviour
 
         // ロード完了後の処理
         Debug.Log($"Switched to {targetScene}, keeping persistent scene '{persistentScene}'.");
+    }
+
+    public static class PlayerPositionManager
+    {
+        public static Vector3? TargetPosition = null;
+        public static Quaternion? TargetRotation = null;
     }
 }
