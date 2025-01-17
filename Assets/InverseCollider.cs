@@ -16,7 +16,7 @@ public class InverseColliderArea : MonoBehaviour
     private List<ColliderData> colliderSettings = new List<ColliderData>(); // コライダー設定のリスト
 
     private List<GameObject> colliderObjects = new List<GameObject>(); // コライダーオブジェクトのリスト
-    private int playerInsideCount = 0; // プレイヤーがエリア内にいるかのカウント
+    private List<bool> playerInsideColliderStates = new List<bool>(); // 各コライダー内のプレイヤー状態
 
     private void Start()
     {
@@ -48,7 +48,6 @@ public class InverseColliderArea : MonoBehaviour
         var mesh = colliderObject.GetComponent<MeshFilter>().mesh;
         mesh.triangles = mesh.triangles.Reverse().ToArray();
         var meshCollider = colliderObject.AddComponent<MeshCollider>();
-        meshCollider.convex = true; // 凸形に設定
         meshCollider.isTrigger = true; // トリガーとして動作
 
         // イベントを処理するためにスクリプトを追加
@@ -57,24 +56,34 @@ public class InverseColliderArea : MonoBehaviour
 
         // コライダーオブジェクトをリストに追加
         colliderObjects.Add(colliderObject);
+        playerInsideColliderStates.Add(false); // 初期状態は「エリア外」とする
     }
 
-    // エリア内にプレイヤーが侵入したときにカウントを増加
-    public void PlayerEnteredArea()
+    // プレイヤーが指定のコライダー内に入ったときに状態を更新
+    public void PlayerEnteredCollider(GameObject colliderObject)
     {
-        playerInsideCount++;
+        int index = colliderObjects.IndexOf(colliderObject);
+        if (index != -1)
+        {
+            playerInsideColliderStates[index] = true;
+        }
     }
 
-    // エリアからプレイヤーが退出したときにカウントを減少
-    public void PlayerExitedArea()
+    // プレイヤーが指定のコライダーから退出したときに状態を更新
+    public void PlayerExitedCollider(GameObject colliderObject)
     {
-        playerInsideCount = Mathf.Max(0, playerInsideCount - 1);
+        int index = colliderObjects.IndexOf(colliderObject);
+        if (index != -1)
+        {
+            playerInsideColliderStates[index] = false;
+        }
     }
 
-    // プレイヤーがエリア内にいるか確認
-    public bool IsPlayerInsideArea()
+    // プレイヤーが1つ以上のコライダー範囲外にいる場合に自由に移動できるかを判定
+    public bool IsPlayerFreeToMove()
     {
-        return playerInsideCount > 0;
+        // プレイヤーが1つでも範囲外にいる場合、自由に移動できる
+        return playerInsideColliderStates.Contains(false);
     }
 }
 
@@ -91,7 +100,8 @@ public class ColliderTriggerHandler : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            parentArea.PlayerEnteredArea();
+            // プレイヤーがコライダー内に入った
+            parentArea.PlayerEnteredCollider(this.gameObject);
         }
     }
 
@@ -99,7 +109,8 @@ public class ColliderTriggerHandler : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            parentArea.PlayerExitedArea();
+            // プレイヤーがコライダーを出た
+            parentArea.PlayerExitedCollider(this.gameObject);
         }
     }
 }

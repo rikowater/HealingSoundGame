@@ -86,10 +86,4 @@ public class SceneChange_1to2 : MonoBehaviour
         // ロード完了後の処理
         Debug.Log($"Switched to {targetScene}, keeping persistent scene '{persistentScene}'.");
     }
-
-    public static class PlayerPositionManager
-    {
-        public static Vector3? TargetPosition = null;
-        public static Quaternion? TargetRotation = null;
-    }
 }
