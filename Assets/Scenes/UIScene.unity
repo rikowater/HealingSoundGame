@@ -3567,9 +3567,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1302547833}
   - {fileID: 1894880884}
   - {fileID: 1723935165}
-  - {fileID: 1302547833}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4653,7 +4653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 1723935164}
   startPosition: {x: 642, y: -1389, z: 0}
-  endPosition: {x: 642, y: 1389, z: 0}
+  endPosition: {x: 642, y: 658, z: 0}
   transitionSpeed: 5
 --- !u!1 &1743815592
 GameObject:
