@@ -2643,7 +2643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1200581740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3295,10 +3295,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
-  m_Height: 4
+  m_Radius: 1.3
+  m_Height: 4.6
   m_Direction: 1
-  m_Center: {x: 5.789569e-10, y: 1.0131664, z: -2.976092e-12}
+  m_Center: {x: 0.06, y: 1.0131664, z: -2.976092e-12}
 --- !u!1001 &1463135248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5766,7 +5766,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 602311af922614be88f4bbb4033d1012,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 602311af922614be88f4bbb4033d1012,
         type: 3}
@@ -5776,7 +5776,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 602311af922614be88f4bbb4033d1012,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 602311af922614be88f4bbb4033d1012,
         type: 3}
@@ -6091,7 +6091,7 @@ GameObject:
   - component: {fileID: 2045113884}
   - component: {fileID: 2045113885}
   m_Layer: 0
-  m_Name: ItemMark
+  m_Name: Item1Mark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,11 +11,13 @@ public class ItemManager : MonoBehaviour
         [SerializeField] private string targetObjectName; // 監視対象のオブジェクト名
         [SerializeField] private GameObject itemToShow1;  // 表示する1つ目のアイテム
         [SerializeField] private GameObject itemToShow2;  // 表示する2つ目のアイテム
+        [SerializeField] private GameObject itemToShow3;  // 表示する3つ目のアイテム
 
         public string TargetSceneName => targetSceneName; // 読み取り専用プロパティ
         public string TargetObjectName => targetObjectName;
         public GameObject ItemToShow1 => itemToShow1;
         public GameObject ItemToShow2 => itemToShow2;
+        public GameObject ItemToShow3 => itemToShow3;
     }
 
     [SerializeField] private List<ItemData> items = new List<ItemData>(); // 複数のアイテムデータリスト
@@ -33,6 +35,10 @@ public class ItemManager : MonoBehaviour
             if (item.ItemToShow2 != null)
             {
                 item.ItemToShow2.SetActive(false);
+            }
+            if (item.ItemToShow3 != null)
+            {
+                item.ItemToShow3.SetActive(false);
             }
 
             // シーンがすでに読み込まれている場合、オブジェクトを探す
@@ -66,6 +72,11 @@ public class ItemManager : MonoBehaviour
                 if (item.ItemToShow2 != null && !item.ItemToShow2.activeSelf)
                 {
                     item.ItemToShow2.SetActive(true);
+                    //Debug.Log("アイテム2が表示されました: " + item.ItemToShow2.name);
+                }
+                if (item.ItemToShow3 != null && !item.ItemToShow3.activeSelf)
+                {
+                    item.ItemToShow3.SetActive(true);
                     //Debug.Log("アイテム2が表示されました: " + item.ItemToShow2.name);
                 }
             }
