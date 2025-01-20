@@ -22,7 +22,7 @@ public class SceneChange_1to2 : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             // 次のシーンでのキャラクター位置を指定
-            PlayerPositionManager.TargetPosition = new Vector3(0, 1, 0); // 例: 次のシーンでの初期位置
+            PlayerPositionManager.TargetPosition = new Vector3(-14, 0, 0); // 例: 次のシーンでの初期位置
             PlayerPositionManager.TargetRotation = Quaternion.Euler(0, 180, 0); // 例: 初期回転
 
             // ローディングシーンをAdditiveでロードし、次のシーン情報を渡す

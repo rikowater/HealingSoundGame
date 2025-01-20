@@ -927,7 +927,7 @@ GameObject:
   - component: {fileID: 177059478}
   - component: {fileID: 177059480}
   - component: {fileID: 177059479}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: PlayButton (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1463,7 +1463,7 @@ GameObject:
   - component: {fileID: 353664813}
   - component: {fileID: 353664815}
   - component: {fileID: 353664814}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: PlayButton (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3288,8 +3288,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 685f140a1319546d4bcf5a8b51084c66, type: 3}
-  m_Resource: {fileID: 8300000, guid: 685f140a1319546d4bcf5a8b51084c66, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 57048e3eb5a944530832eca838d237ab, type: 3}
+  m_Resource: {fileID: 8300000, guid: 57048e3eb5a944530832eca838d237ab, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
@@ -3691,7 +3691,7 @@ Canvas:
   m_GameObject: {fileID: 1076040028}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -3703,7 +3703,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: -5
   m_TargetDisplay: 0
 --- !u!224 &1076040032
 RectTransform:
@@ -3717,8 +3717,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1894880884}
-  - {fileID: 1302547833}
+  - {fileID: 1115915142}
   - {fileID: 1723935165}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3790,6 +3789,43 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1115915141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1115915142}
+  m_Layer: 5
+  m_Name: PlayPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1115915142
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115915141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1894880884}
+  - {fileID: 1302547833}
+  m_Father: {fileID: 1076040032}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1135634840
 GameObject:
@@ -4062,7 +4098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1302547833}
   - component: {fileID: 1302547834}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: JoyStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4083,7 +4119,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 968418885}
-  m_Father: {fileID: 1076040032}
+  m_Father: {fileID: 1115915142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1302547834
 MonoBehaviour:
@@ -4545,7 +4581,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455832459}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 018e810812cc845dd99f696a9934e337, type: 3}
@@ -4737,7 +4773,7 @@ GameObject:
   - component: {fileID: 1620433621}
   - component: {fileID: 1620433623}
   - component: {fileID: 1620433622}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5478,19 +5514,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894880883}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1809734032}
   - {fileID: 1675917}
-  m_Father: {fileID: 1076040032}
+  m_Father: {fileID: 1115915142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 1730.8411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1894880885
 MonoBehaviour:

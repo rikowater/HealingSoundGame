@@ -21,9 +21,39 @@ public class SceneChange_2to1 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // ローディングシーンをロードし、次のシーン情報を渡す
+            // 次のシーンでのキャラクター位置を指定
+            PlayerPositionManager.TargetPosition = new Vector3(46, 0, 0); // 例: 次のシーンでの初期位置
+            PlayerPositionManager.TargetRotation = Quaternion.Euler(0, 180, 0); // 例: 初期回転
+
+            // ローディングシーンをAdditiveでロードし、次のシーン情報を渡す
             LoadingController.NextSceneName = targetScene;
-            SceneManager.LoadScene(loadingScene);
+
+            // `LoadingScene`をロード
+            SceneManager.LoadScene(loadingScene, LoadSceneMode.Additive);
+
+            // 現在のシーン（`area1`）をアンロード
+            StartCoroutine(UnloadCurrentScene());
+        }
+    }
+
+
+    private IEnumerator UnloadCurrentScene()
+    {
+        // 現在のアクティブシーンを取得
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // 永続シーンでない場合、アンロード
+        if (currentScene.name != persistentScene)
+        {
+            AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync(currentScene);
+
+            // アンロード完了まで待機
+            while (!unloadOperation.isDone)
+            {
+                yield return null;
+            }
+
+            Debug.Log($"{currentScene.name} has been unloaded.");
         }
     }
 
