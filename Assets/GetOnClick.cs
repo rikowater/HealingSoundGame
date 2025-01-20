@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GetOnClick : MonoBehaviour
 {
-    public void GetAtClick()
+    public void OnMouseDown()
     {
-        Destroy(gameObject);
-        Debug.Log("Click");
+        Destroy(gameObject); // クリックでオブジェクトを破壊
     }
 }

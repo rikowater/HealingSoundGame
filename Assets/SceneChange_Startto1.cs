@@ -32,7 +32,7 @@ public class SceneChange_Startto1 : MonoBehaviour
         AudioFadeOut fadeOut = GetComponent<AudioFadeOut>();
         if (fadeOut != null)
         {
-            fadeOut.StartFadeOut(1f); // フェードアウト時間を指定（例: 2秒）
+            fadeOut.StartFadeOut(2f); // フェードアウト時間を指定（例: 2秒）
         }
 
         // 次のシーンでのキャラクター位置を指定
