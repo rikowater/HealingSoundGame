@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class SceneChange_toListening : MonoBehaviour
+public class SceneChange_to1 : MonoBehaviour
 {
     private static string persistentScene = "UIScene"; // 永続シーン
-    public string targetScene = "listenig_area"; // 遷移先のシーン名
+    public string targetScene = "area1"; // 遷移先のシーン名
     public string loadingScene = "LoadingScene"; // ローディングシーン名
     public AudioClip clickSound; // クリック時の効果音
     private AudioSource audioSource; // 効果音再生用

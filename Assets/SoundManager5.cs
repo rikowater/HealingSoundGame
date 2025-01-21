@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class soundManager3 : MonoBehaviour
+public class soundManager5 : MonoBehaviour
 {
     private AudioSource audioSource;
     public Slider volumeSlider; // スライダーの参照を設定する
