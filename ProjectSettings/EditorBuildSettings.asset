@@ -29,5 +29,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: c653de7f5a6d747e1bfff8dc6f090a1c
+  - enabled: 1
+    path: Assets/Scenes/listening_area.unity
+    guid: 088211ea237a54789a25cef87686463b
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
