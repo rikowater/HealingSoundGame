@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/test_Scenes.unity
     guid: 6b984808326b142edb79399e9eb86b2e
   - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: b125152bf852b4261979d9438a66c25c
+  - enabled: 1
     path: Assets/Scenes/UIScene.unity
     guid: 41b7086afa4a847d0872a3188c1148da
   - enabled: 1

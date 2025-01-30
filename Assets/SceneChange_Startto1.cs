@@ -7,6 +7,7 @@ public class SceneChange_Startto1 : MonoBehaviour
     public string targetScene = "area1"; // 遷移先のシーン名
     public string loadingScene = "LoadingScene"; // ローディングシーン名
     public AudioClip clickSound; // クリック時の効果音
+    public float fadeOutDuration = 2f; // フェードアウト時間
 
     private AudioSource audioSource;
 
@@ -28,19 +29,29 @@ public class SceneChange_Startto1 : MonoBehaviour
             audioSource.PlayOneShot(clickSound);
         }
 
+        // フェードアウトを待機してからシーン遷移
+        StartCoroutine(FadeOutAndChangeScene());
+    }
+
+    private IEnumerator FadeOutAndChangeScene()
+    {
         // フェードアウト処理を呼び出し
         AudioFadeOut fadeOut = GetComponent<AudioFadeOut>();
         if (fadeOut != null)
         {
-            fadeOut.StartFadeOut(2f); // フェードアウト時間を指定（例: 2秒）
+            yield return fadeOut.FadeOutAndWait(fadeOutDuration); // フェードアウト時間を指定（例: 2秒）
         }
 
         // 次のシーンでのキャラクター位置を指定
-        PlayerPositionManager.TargetPosition = new Vector3(6, 0, 0); // 例: 次のシーンでの初期位置
+        PlayerPositionManager.TargetPosition = new Vector3(0, 0, 0); // 例: 次のシーンでの初期位置
         PlayerPositionManager.TargetRotation = Quaternion.Euler(0, 180, 0); // 例: 初期回転
 
         // ローディングシーンをAdditiveでロードし、次のシーン情報を渡す
         LoadingController.NextSceneName = targetScene;
+
+        // **ここでフラグを設定**（次のシーンでキャンバスを表示）
+        PlayerPrefs.SetInt("ShowCanvas", 1);
+        PlayerPrefs.Save();
 
         // ローディングシーンをAdditiveでロード
         SceneManager.LoadScene(loadingScene, LoadSceneMode.Additive);
