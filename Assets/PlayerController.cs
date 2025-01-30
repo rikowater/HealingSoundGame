@@ -14,23 +14,23 @@ public class PlayerController : MonoBehaviour
     private Vector3 _aim; // 進行方向
     private Quaternion _playerRotation; // キャラクターの回転
 
-    void Awake()
-    {
-        StartCoroutine(WaitForGlobalObjectManager());
-    }
+    // void Awake()
+    // {
+    //     StartCoroutine(WaitForGlobalObjectManager());
+    // }
 
-    private IEnumerator WaitForGlobalObjectManager()
-    {
-        // 別シーンのロードが完了するのを待つ
-        while (GlobalObjectManager.Instance == null || GlobalObjectManager.Instance.sharedObject == null)
-        {
-            Debug.Log("Waiting for GlobalObjectManager to be initialized...");
-            yield return null; // 次のフレームまで待機
-        }
+    // private IEnumerator WaitForGlobalObjectManager()
+    // {
+    //     // 別シーンのロードが完了するのを待つ
+    //     while (GlobalObjectManager.Instance == null || GlobalObjectManager.Instance.sharedObject == null)
+    //     {
+    //         Debug.Log("Waiting for GlobalObjectManager to be initialized...");
+    //         yield return null; // 次のフレームまで待機
+    //     }
 
-        Debug.Log("Setting sharedObject to inactive.");
-        GlobalObjectManager.Instance.sharedObject.SetActive(false);
-    }
+    //     Debug.Log("Setting sharedObject to inactive.");
+    //     GlobalObjectManager.Instance.sharedObject.SetActive(false);
+    // }
 
     void Start()
     {
@@ -79,27 +79,27 @@ public class PlayerController : MonoBehaviour
         _rigidbody.velocity = _velocity * _speed;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.CompareTag("Target"))
-        {
-            // トリガー内に入ったらオブジェクトを表示
-            if (GlobalObjectManager.Instance != null && GlobalObjectManager.Instance.sharedObject != null)
-            {
-                GlobalObjectManager.Instance.sharedObject.SetActive(true);
-            }
-        }
-    }
+    // private void OnTriggerStay(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Target"))
+    //     {
+    //         // トリガー内に入ったらオブジェクトを表示
+    //         if (GlobalObjectManager.Instance != null && GlobalObjectManager.Instance.sharedObject != null)
+    //         {
+    //             GlobalObjectManager.Instance.sharedObject.SetActive(true);
+    //         }
+    //     }
+    // }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Target"))
-        {
-            // トリガー外に出たらオブジェクトを非表示
-            if (GlobalObjectManager.Instance != null && GlobalObjectManager.Instance.sharedObject != null)
-            {
-                GlobalObjectManager.Instance.sharedObject.SetActive(false);
-            }
-        }
-    }
+    // private void OnTriggerExit(Collider other)
+    // {
+    //     if (other.gameObject.CompareTag("Target"))
+    //     {
+    //         // トリガー外に出たらオブジェクトを非表示
+    //         if (GlobalObjectManager.Instance != null && GlobalObjectManager.Instance.sharedObject != null)
+    //         {
+    //             GlobalObjectManager.Instance.sharedObject.SetActive(false);
+    //         }
+    //     }
+    // }
 }

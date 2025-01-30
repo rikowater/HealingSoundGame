@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GlobalObjectManager : MonoBehaviour
+public class GlobalObjectManager2 : MonoBehaviour
 {
     // シーン間で共有するオブジェクトの参照
     public GameObject sharedObject;  // ← これが定義されていることを確認
 
     [SerializeField] private List<string> activeScenes;
 
-    private void Awake()
+    private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         CheckSceneActive();
@@ -29,10 +29,6 @@ public class GlobalObjectManager : MonoBehaviour
     private void CheckSceneActive()
     {
         string currentScene = SceneManager.GetActiveScene().name;
-        if (sharedObject != null)
-        {
-            sharedObject.SetActive(activeScenes.Contains(currentScene));
-        }
+        gameObject.SetActive(activeScenes.Contains(currentScene));
     }
-
 }
