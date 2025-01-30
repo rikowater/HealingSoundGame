@@ -1167,7 +1167,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!224 &1511423656
 RectTransform:
@@ -1235,6 +1235,7 @@ MonoBehaviour:
   targetScene: area1
   loadingScene: LoadingScene
   clickSound: {fileID: 8300000, guid: 395adb73f1402477ab2b17c6476743df, type: 3}
+  fadeOutDuration: 2
 --- !u!82 &1511423660
 AudioSource:
   m_ObjectHideFlags: 0
