@@ -20,10 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UIScene.unity
     guid: 41b7086afa4a847d0872a3188c1148da
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/test_3D.unity
     guid: 14fe7cf363b9d4bc5b70c43786d2c522
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/area2.unity
     guid: 85b9ccec4a6b248a3a56d10aa40ef686
   - enabled: 1
